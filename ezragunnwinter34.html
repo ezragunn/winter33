@@ -28,15 +28,43 @@
 
     <script>
     var tempo = 2000;
-    mysong = [
-        [261, tempo * .125],
-        [261, tempo * .125],
-        [261, tempo * .125],
-        [698, tempo * .25],
-        [880, tempo * .25],
-        [null, 50]
-    ];
-
+mysong = [ 
+            [349.23, tempo * .12],
+            [440, tempo * .12],
+            [523.25, tempo * .12],
+            [659.25, tempo * .12],
+            [523.25, tempo * .12],
+            [440, tempo * .12],
+            [349.23, tempo * .12],
+            [440, tempo * .12],
+            [null, 10],
+            [392, tempo * .125],
+            [493.88, tempo * .12],
+            [587.33, tempo * .12],
+            [659.25, tempo * .12],
+            [587.33, tempo * .12],
+            [493.88, tempo * .12],
+            [392, tempo * .12],
+            [493.88, tempo * .12],
+            [null, 10],
+            [440, tempo * .125],
+            [523.25, tempo * .12],
+            [659.25, tempo * .12],
+            [698.46, tempo * .12],
+            [659.25, tempo * .12],
+            [523.25, tempo * .12],
+            [440, tempo * .12],
+            [523.25 , tempo * .12],
+            [null, 10],
+            [493.88, tempo * .125],
+            [523.25, tempo * .12],
+            [659.25, tempo * .12],
+            [698.46, tempo * .12],
+            [659.25, tempo * .12],
+            [523.25, tempo * .12],
+            [493.88, tempo * .12],
+            [523.25 , tempo * .12],
+        ];
     function sensop(mag) {
         //newmag = 2 * ((1 - mag) - .5);
         newmag = mag
@@ -149,7 +177,7 @@
             socket.emit('fullMode');
         });
 
-
+        
         $('body').keydown(function(event) {
             console.log(event.which);
             speed = $("#speed").text();
@@ -307,13 +335,13 @@
         </div>
 
 
-        <h3>Robot Control</h3>
+        <h3 style="text-align: center">Robot Control</h3>
         <div class="row">
             <button class="btn-success btn col-md-2" id="passiveMode">Passive Mode</button>
             <button class="btn-warning btn col-md-2" id="safeMode">Safe Mode</button>
             <button class="btn-danger btn col-md-2" id="fullMode">Full Mode</button>
         </div>
-        <div class="row">
+        <div class="row" style="text-align: center">
             <div class="col-xs-3">
 
 
@@ -375,7 +403,8 @@
             <div class="col-md-3" id="frontrightdata" style="height:300px">.....</div>
             <div class="col-md-3" id="rightdata" style="height:300px">.....</div>
         </div>
-        <div class="col-md-3" id="batterycapacity" style="height:300px">bat</div>
+        <h3>Battery Capacity</h3>
+        <div class="col-md-3" id="batterycapacity" style="height:300px"></div>
 
         <div class="row">
             <div class="col-xs-6">
