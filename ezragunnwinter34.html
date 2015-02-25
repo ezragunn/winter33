@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>winter33</title>
+    <title>winter34</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
@@ -29,41 +29,46 @@
     <script>
     var tempo = 2000;
 mysong = [ 
-            [349.23, tempo * .12],
-            [440, tempo * .12],
-            [523.25, tempo * .12],
-            [659.25, tempo * .12],
-            [523.25, tempo * .12],
-            [440, tempo * .12],
-            [349.23, tempo * .12],
-            [440, tempo * .12],
-            [null, 10],
-            [392, tempo * .125],
-            [493.88, tempo * .12],
-            [587.33, tempo * .12],
-            [659.25, tempo * .12],
-            [587.33, tempo * .12],
-            [493.88, tempo * .12],
-            [392, tempo * .12],
-            [493.88, tempo * .12],
-            [null, 10],
+            [174.61, temp * 0.0625],
+            [349.23, tempo * .125],
             [440, tempo * .125],
-            [523.25, tempo * .12],
-            [659.25, tempo * .12],
-            [698.46, tempo * .12],
-            [659.25, tempo * .12],
-            [523.25, tempo * .12],
-            [440, tempo * .12],
-            [523.25 , tempo * .12],
+            [523.25, tempo * .125],
+            [659.25, tempo * .125],
+            [523.25, tempo * .125],
+            [440, tempo * .125],
+            [349.23, tempo * .125],
+            [440, tempo * .125],
+        ];
             [null, 10],
+            [123.47, temp * 0.0625],
+            [392, tempo * .125],
             [493.88, tempo * .125],
-            [523.25, tempo * .12],
-            [659.25, tempo * .12],
-            [698.46, tempo * .12],
-            [659.25, tempo * .12],
-            [523.25, tempo * .12],
-            [493.88, tempo * .12],
-            [523.25 , tempo * .12],
+            [587.33, tempo * .125],
+            [659.25, tempo * .125],
+            [587.33, tempo * .125],
+            [493.88, tempo * .125],
+            [392, tempo * .125],
+            [493.88, tempo * .125],
+            [null, 10],
+            [130.81, temp * 0.0625],
+            [440, tempo * .125],
+            [523.25, tempo * .125],
+            [659.25, tempo * .125],
+            [698.46, tempo * .125],
+            [659.25, tempo * .125],
+            [523.25, tempo * .125],
+            [440, tempo * .125],
+            [523.25, tempo * .125],
+            [null, 10],
+            [82.41, temp * 0.0625],
+            [493.88, tempo * .125],
+            [523.25, tempo * .125],
+            [659.25, tempo * .125],
+            [698.46, tempo * .125],
+            [659.25, tempo * .125],
+            [523.25, tempo * .125],
+            [493.88, tempo * .125],
+            [523.25, tempo * .125],
         ];
     function sensop(mag) {
         //newmag = 2 * ((1 - mag) - .5);
@@ -177,7 +182,7 @@ mysong = [
             socket.emit('fullMode');
         });
 
-        
+
         $('body').keydown(function(event) {
             console.log(event.which);
             speed = $("#speed").text();
@@ -337,73 +342,75 @@ mysong = [
 
         <h3 style="text-align: center">Robot Control</h3>
         <div class="row">
-            <button class="btn-success btn col-md-2" id="passiveMode">Passive Mode</button>
-            <button class="btn-warning btn col-md-2" id="safeMode">Safe Mode</button>
-            <button class="btn-danger btn col-md-2" id="fullMode">Full Mode</button>
+            <button class="btn-success btn col-md-2; col-md-offset-1" id="passiveMode">Passive Mode</button>
+            <button class="btn-warning btn col-md-2; col-md-offset-3" id="safeMode">Safe Mode</button>
+            <button class="btn-danger btn col-md-2; col-md-offset-3" id="fullMode">Full Mode</button>
         </div>
+        <br><br>
         <div class="row" style="text-align: center">
-            <div class="col-xs-3">
-
-
+            <div class="col-xs-3; col-md-offset-">
                 <button id="playsong" class="btn-success btn-lg btn-block">Play Music
                     <span class="glyphicon glyphicon-music"></span>
                 </button>
             </div>
         </div>
-        <div class="row">
+        <br><br>
+    <div class="col-md-offset-3">
+            <div class="row">
             <div class="col-md-2">
-                <button class="btn-primary btn-lg btn-block" id="forward"><span class="glyphicon glyphicon-arrow-up rotate-left-45"></span>Forward-left
+                <button class="btn-primary btn-lg btn-block; control-button" id="forward"><span class="glyphicon glyphicon-arrow-up rotate-left-45"></span>Forward-left
                 </button>
             </div>
             <div class="col-md-2">
-                <button class="btn-primary btn-lg btn-block" id="forward">Forward<span class="glyphicon glyphicon-arrow-up"></span>
+                <button class="btn-primary btn-lg btn-block; control-button" id="forward">Forward<span class="glyphicon glyphicon-arrow-up"></span>
                 </button>
             </div>
             <div class="col-md-2">
                 </button>
-                <button class="btn-primary btn-lg btn-block" id="forward">Forward-right<span class="glyphicon glyphicon-arrow-up rotate-right-45"></span>
+                <button class="btn-primary btn-lg btn-block; control-button" id="forward">Forward- <span class="glyphicon glyphicon-arrow-up rotate-right-45"></span>right
                 </button>
             </div>
 
         </div>
         <div class="row">
             <div class="col-md-2">
-                <button class="btn-primary btn-lg btn-block" id="turnLeft"><span class="glyphicon glyphicon-arrow-left"> Left</span>
+                <button class="btn-primary btn-lg btn-block; control-button" id="turnLeft"><span class="glyphicon glyphicon-arrow-left"> Left</span>
                 </button>
             </div>
             <div class="col-md-2 ">
 
-                <button class="btn-lg btn-block btn-danger" id="stop">Stop
+                <button class="btn-lg btn-block btn-danger; control-button1" id="stop">Stop
                     <span class="glyphicon glyphicon-stop"></span>
                 </button>
             </div>
 
             <div class="col-md-2">
-                <button class="btn-primary btn-lg btn-block" id="turnRight">Right<span class="glyphicon glyphicon-arrow-right"></span>
+                <button class="btn-primary btn-lg btn-block; control-button" id="turnRight">Right<span class="glyphicon glyphicon-arrow-right"></span>
                 </button>
             </div>
         </div>
         <div class="row">
             <div class="col-md-2">
-                <button class="btn-primary btn-lg btn-block" id="backleft">Back-Left
+                <button class="btn-primary btn-lg btn-block; control-button" id="backleft">Back-Left
                 </button>
             </div>
             <div class="col-md-2">
-                <button class="btn-primary btn-lg btn-block" id="backward">Back<span class="glyphicon glyphicon-arrow-down"></span>
+                <button class="btn-primary btn-lg btn-block; control-button" id="backward">Back<span class="glyphicon glyphicon-arrow-down"></span>
                 </button>
             </div>
             <div class="col-md-2">
-                <button class="btn-primary btn-lg btn-block" id="backright">Back-Right
+                <button class="btn-primary btn-lg btn-block; control-button" id="backright">Back-Right
                 </button>
             </div>
         </div>
+    </div>
+        <h3 style="text-align: center">Sensor Data</h3>
         <div class="row">
             <div class="col-md-3" id="leftsignal" style="height:300px">.....</div>
             <div class="col-md-3" id="front_leftsignal" style="height:300px">.....</div>
             <div class="col-md-3" id="frontrightdata" style="height:300px">.....</div>
             <div class="col-md-3" id="rightdata" style="height:300px">.....</div>
         </div>
-        <h3>Battery Capacity</h3>
         <div class="col-md-3" id="batterycapacity" style="height:300px"></div>
 
         <div class="row">

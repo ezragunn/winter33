@@ -32,3 +32,15 @@
     -o-transform:rotate(-45deg);
     .rotate(45deg);
 }
+.control-button {
+    height: 5em;
+    width: 8em;
+    margin: 1em;
+}
+
+.control-button1 {
+    height: 5em;
+    width: 8em;
+    margin: 1em;
+    background-color: #e10015;
+}
