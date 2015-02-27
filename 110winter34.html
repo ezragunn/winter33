@@ -29,41 +29,14 @@
     <script>
     var tempo = 2000;
 mysong = [ 
-            [349.23, tempo * .125],
-            [440, tempo * .125],
-            [523.25, tempo * .125],
-            [659.25, tempo * .125],
-            [523.25, tempo * .125],
-            [440, tempo * .125],
-            [349.23, tempo * .125],
-            [440, tempo * .125],
+            [null, tempo * 1],
+            [174.61, tempo * 1],
             [null, 10],
-            [392, tempo * .125],
-            [493.88, tempo * .125],
-            [587.33, tempo * .125],
-            [659.25, tempo * .125],
-            [587.33, tempo * .125],
-            [493.88, tempo * .125],
-            [392, tempo * .125],
-            [493.88, tempo * .125],
+            [123.47, tempo * 1],
             [null, 10],
-            [440, tempo * .125],
-            [523.25, tempo * .125],
-            [659.25, tempo * .125],
-            [698.46, tempo * .125],
-            [659.25, tempo * .125],
-            [523.25, tempo * .125],
-            [440, tempo * .125],
-            [523.25, tempo * .125],
+            [130.81, tempo * 1],
             [null, 10],
-            [493.88, tempo * .125],
-            [523.25, tempo * .125],
-            [659.25, tempo * .125],
-            [698.46, tempo * .125],
-            [659.25, tempo * .125],
-            [523.25, tempo * .125],
-            [493.88, tempo * .125],
-            [523.25, tempo * .125],
+            [82.41, tempo * 1],
         ];
     function sensop(mag) {
         //newmag = 2 * ((1 - mag) - .5);
@@ -81,7 +54,7 @@ mysong = [
             $("#allsensors").toggleClass('hidden');
         });
         //var socket = io.connect('http://10.48.102.xxx:3001'); //change this to match your robot
-        var socket = io.connect('http://10.48.102.111:3001'); //change this to match your robot
+        var socket = io.connect('http://10.48.102.112:3001'); //change this to match your robot
         batterycapacity(socket);
         leftsignal(socket);
         front_leftsignal(socket);
