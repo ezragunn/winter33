@@ -65,6 +65,15 @@ mysong = [
             [493.88, tempo * .125],
             [523.25, tempo * .125],
         ];
+mysong1 = [
+            [174.61, tempo * 1],
+            [null, 10],
+            [123.47, tempo * 1],
+            [null, 10],
+            [130.81, tempo * 1],
+            [null, 10],
+            [82.41, tempo * 1],
+        ];
     function sensop(mag) {
         //newmag = 2 * ((1 - mag) - .5);
         newmag = mag
@@ -81,11 +90,12 @@ mysong = [
             $("#allsensors").toggleClass('hidden');
         });
         //var socket = io.connect('http://10.48.102.xxx:3001'); //change this to match your robot
-        var socket = io.connect('http://10.48.102.111:3001'); //change this to match your robot
-        batterycapacity(socket);
-        leftsignal(socket);
-        front_leftsignal(socket);
-        socket.on('sensordata', function(data) {
+        var socket1 = io.connect('http://10.48.102.112:3001'); //change this to match your robot
+        var socket2 = io.connect('http://10.48.102.110:3001'); //change this to match your robot
+        batterycapacity(socket1);
+        leftsignal(socket1);
+        front_leftsignal(socket1);
+        socket1.on('sensordata', function(data) {
 
             //console.log(data);
             $("#current").text(data.battery.current.amps);
@@ -108,13 +118,13 @@ mysong = [
             $(".right_signal").text(sensop(data.cliff_sensors.right.signal.magnitude));
 
             if (data.song.playing == false) {
-                //socket.emit('sing', [[data.cliff_sensors.front_left.signal.magnitude * 1000,data.cliff_sensors.front_right.signal.magnitude * 1000]]);
+                //socket1.emit('sing', [[data.cliff_sensors.front_left.signal.magnitude * 1000,data.cliff_sensors.front_right.signal.magnitude * 1000]]);
             }
 
             $("#allsensors").text(JSON.stringify(data));
         });
 
-        socket.on('countup', function(data) {
+        socket1.on('countup', function(data) {
             //console.log(data);
             $("#countup").text(data);
         });
@@ -122,7 +132,7 @@ mysong = [
 
         $("#forward").click(function(e) {
             console.log('forward');
-            socket.emit('drive', {
+            socket1.emit('drive', {
                 left: 15,
                 right: 15
             });
@@ -130,7 +140,7 @@ mysong = [
 
         $("#backward").click(function(e) {
             console.log('backward');
-            socket.emit('drive', {
+            socket1.emit('drive', {
                 left: -15,
                 right: -15
             });
@@ -138,7 +148,7 @@ mysong = [
 
         $("#stop").click(function(e) {
             console.log('stop');
-            socket.emit('drive', {
+            socket1.emit('drive', {
                 left: 0,
                 right: 0
             });
@@ -147,7 +157,7 @@ mysong = [
 
         $("#turnLeft").click(function(e) {
             console.log('stop');
-            socket.emit('drive', {
+            socket1.emit('drive', {
                 left: -15,
                 right: 15
             });
@@ -156,25 +166,29 @@ mysong = [
 
         $("#turnRight").click(function(e) {
             console.log('stop');
-            socket.emit('drive', {
+            socket1.emit('drive', {
                 left: 15,
                 right: -15
             });
         });
 
         $("#playsong").click(function(e) {
-            socket.emit('sing', mysong);
+            socket1.emit('sing', mysong);
+        });
+        
+        $("#playsong1").click(function(e) {
+            socket2.emit('sing', mysong1);
         });
 
         $("#passiveMode").click(function(e) {
-            socket.emit('passiveMode');
+            socket1.emit('passiveMode');
         });
         $("#safeMode").click(function(e) {
-            socket.emit('safeMode');
+            socket1.emit('safeMode');
         });
 
         $("#fullMode").click(function(e) {
-            socket.emit('fullMode');
+            socket1.emit('fullMode');
         });
 
 
@@ -189,7 +203,7 @@ mysong = [
                 speed = $("#speed").text();
                 speed = speed * 1 + 25;
                 $("#speed").text(speed);
-                socket.emit('drive', {
+                socket1.emit('drive', {
                     left: speed,
                     right: speed
                 });
@@ -202,7 +216,7 @@ mysong = [
                 speed = $("#speed").text();
                 speed = speed * 1 - 25;
                 $("#speed").text(speed);
-                socket.emit('drive', {
+                socket1.emit('drive', {
                     left: speed,
                     right: speed
                 });
@@ -216,7 +230,7 @@ mysong = [
                 speed = $("#speed").text();
                 speed = 25;
                 $("#speed").text(speed);
-                socket.emit('drive', {
+                socket1.emit('drive', {
                     left: speed,
                     right: -speed
                 });
@@ -229,7 +243,7 @@ mysong = [
                 speed = $("#speed").text();
                 (speed < 25) ? speed=25 : speed = speed;
                 $("#speed").text(speed);
-                socket.emit('drive', {
+                socket1.emit('drive', {
                     left: Math.round(speed),
                     right: Math.round(speed -25)
                 });
@@ -242,7 +256,7 @@ mysong = [
                 speed = $("#speed").text();
                 (speed < 25) ? speed=25 : speed = speed;
                 $("#speed").text(speed);
-                socket.emit('drive', {
+                socket1.emit('drive', {
                     left: Math.round(speed - 25),
                     right: Math.round(speed)
                 });
@@ -255,7 +269,7 @@ mysong = [
                 speed = $("#speed").text();
                 speed = 25;
                 $("#speed").text(speed);
-                socket.emit('drive', {
+                socket1.emit('drive', {
                     left: -speed,
                     right: speed
                 });
@@ -273,7 +287,7 @@ mysong = [
                     if (Math.abs(speed) <= 50) {
                         speed = 0;
                         $("#speed").text(speed);
-                        socket.emit('drive', {
+                        socket1.emit('drive', {
                             left: speed,
                             right: speed
                         });
@@ -283,7 +297,7 @@ mysong = [
                         speed = $("#speed").text() * 1;
                         speed += speed > 0 ? Number(-75) : Number(75);
                         $("#speed").text(speed);
-                        socket.emit('drive', {
+                        socket1.emit('drive', {
                             left: speed,
                             right: speed
                         });
@@ -344,7 +358,7 @@ mysong = [
         <br><br>
         <div class="row" style="text-align: center">
             <div class="col-xs-3; col-md-offset-">
-                <button id="playsong" class="btn-success btn-lg btn-block">Play Music
+                <button id="playsong; playsong1" class="btn-success btn-lg btn-block">Play Music
                     <span class="glyphicon glyphicon-music"></span>
                 </button>
             </div>
