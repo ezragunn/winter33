@@ -65,15 +65,7 @@ mysong = [
             [493.88, tempo * .125],
             [523.25, tempo * .125],
         ];
-mysong1 = [
-            [174.61, tempo * 1],
-            [null, 10],
-            [123.47, tempo * 1],
-            [null, 10],
-            [130.81, tempo * 1],
-            [null, 10],
-            [82.41, tempo * 1],
-        ];
+        
     function sensop(mag) {
         //newmag = 2 * ((1 - mag) - .5);
         newmag = mag
@@ -91,7 +83,6 @@ mysong1 = [
         });
         //var socket = io.connect('http://10.48.102.xxx:3001'); //change this to match your robot
         var socket1 = io.connect('http://10.48.102.112:3001'); //change this to match your robot
-        var socket2 = io.connect('http://10.48.102.110:3001'); //change this to match your robot
         batterycapacity(socket1);
         leftsignal(socket1);
         front_leftsignal(socket1);
@@ -174,10 +165,6 @@ mysong1 = [
 
         $("#playsong").click(function(e) {
             socket1.emit('sing', mysong);
-        });
-        
-        $("#playsong1").click(function(e) {
-            socket2.emit('sing', mysong1);
         });
 
         $("#passiveMode").click(function(e) {
